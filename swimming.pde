@@ -27,28 +27,26 @@ void draw() {
     system.display();
 }
 
-void mouseClicked() {
+void mousePressed() {
     system.onClick(mouseX, mouseY);
+
+    if (mouseButton == RIGHT ) {
+        squ1.move(10);
+    } else if (mouseButton == LEFT ) {
+        squ1.move(-10);
+    }
 }
 
 void keyPressed() {
     if (key == CODED) {
         if (keyCode == UP) {
-        station=0;
+            station=0;
         } else if (keyCode == DOWN) {
-        station=1;
+            station=1;
         } else if (keyCode == RIGHT) {
-        station =2;
+            station =2;
         } else if (keyCode == LEFT) {
-        station=3;
+            station=3;
         }
     }
 }
-
-void mousePressed() {
-    if (mouseButton == RIGHT ) {
-      squ1.move(10);
-    } else if (mouseButton == LEFT ) {
-      squ1.move(-10);
-    }
-  }
