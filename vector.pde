@@ -187,3 +187,34 @@ class Vector2 {
     y = _y;
   }
 }
+
+class Eye {
+  Transform transform = new Transform();
+  private Circle _eye;
+  private Circle _pupil;
+  color eyeColor;
+  color pupilColor;
+  
+  public Eye(color eyeColor, color pupilColor, Vector2 initialPosition){
+    _eye = new Circle(
+      eyeColor,
+      15,
+      initialPosition
+    );
+
+    _pupil = new Circle(
+      pupilColor,
+      5,
+      initialPosition.Sum(new Vector2(0, -4))
+    );
+
+    transform.SetPosition(initialPosition);
+    _eye.transform.SetParent(transform);
+    _pupil.transform.SetParent(transform);
+  }
+
+  public void display(){
+    _eye.display();
+    _pupil.display();
+  }
+}
