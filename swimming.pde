@@ -1,7 +1,10 @@
+color backgroundColor = #FFFFFF;
 Vector2 canvasSize = new Vector2(1280, 720);
+GameSystem system = new GameSystem();
+float globalGravity = 1;
 
 void settings(){
-    size((int)canvasSize.x, (int)canvasSize.y); 
+    size((int)canvasSize.x, (int)canvasSize.y);
 }
 
 void setup() {
@@ -10,11 +13,10 @@ void setup() {
 }
   
 void draw() {
-
+    background(backgroundColor);
+    system.display();
 }
 
-//if mouse is pressed add points
-mousePressed() { 
-    uiManager.counter(mouseX, mouseY);
-    uiManager.mouseHasBeenPressed = true;
+void mouseClicked() {
+    system.onClick(mouseX, mouseY);
 }
