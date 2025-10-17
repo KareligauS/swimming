@@ -1,5 +1,5 @@
 class uiManager {
-int currentCount;    
+int points;
 
     uiManager() {}
 
@@ -21,14 +21,20 @@ boolean IsPointInCircle(Circle circle, Vector2 point) {
   }
 }
 
-}
 //Count up if you click on a trashbag
 counter() {
     if (IsPointInCircle && mousePressed) {
-        
+        points++;
     }
 }
-//show message
-//
+
+update () {
+    IsPointInCircle();
+    counter();
+}
+display() {
+    String pointsMsg = "Current Points: "+points;
+    fill(200);
+    text(s, 40, 40, 280, 320);
 
 }
