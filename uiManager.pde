@@ -1,10 +1,10 @@
-//place holder setup
+/*place holder setup
 
-setup() {
+void setup() {
     canvas(200,200);
     trashbag = new Circle();
 }
-draw() {
+void draw() {
 
 }
 */
@@ -24,22 +24,18 @@ class uiManager {
     boolean mouseHasBeenPressed;
 
 
-    //constructor
     uiManager() {
         points = 0; // Initialize points
     }
 
     /**
-     * Checks if the given point (px, py) is inside the Circle
+     checks if the given point (px, py) is inside the Circle
      */
     boolean IsPointInCircle(Circle circle, float px, float py) {
         // Calculate the squared distance between the point and the circle's center
-        // dx = (px - circle.x)
         float dx = px - circle.x;
-        // dy = (py - circle.y)
         float dy = py - circle.y;
         
-        // Squared distance = dx^2 + dy^2
         float squaredDistance = sq(dx) + sq(dy); 
         
         // Calculate the squared radius
