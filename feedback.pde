@@ -9,14 +9,16 @@ class Feedback {
         calcDuration();
         pushMatrix();
         translate(smileyPosX, smileyPosY);
-        image("happyface.png", 0, 0);
+        img = loadImage("happyface.jpg");
+        image(img, 0, 0);
     }
 
     void showAngry() {
         calcDuration();
         pushMatrix();
         translate(smileyPosX, smileyPosY);
-        image("angryFace.png", 0, 0);
+        img = loadImage("angryFace.png");
+        image(img, 0, 0);
     }
 
     void calcDuration() {
