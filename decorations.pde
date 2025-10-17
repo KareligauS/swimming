@@ -49,103 +49,76 @@ class Tree {
       rect(x-250, y-250, 35, 50);
 
       //Trash
-      stroke(0);
-      fill(#82BF00);
-      ellipse(trashX, trashY-25, 40, 15);
-  
-      fill(#716E6E);
-      rect(trashX, trashY, 30, 50);
-  
-      rect(trashX-10, trashY, 5, 40);
-      rect(trashX, trashY, 5, 40);
-      rect(trashX+10, trashY, 5, 40);
-  
-      rect(trashX, trashY-35, 40, 10);
-      rect(trashX, trashY-40, 10, 5);
 
     }
   }
 
   class Squirrel{
-  float squX;
-  float squY;
-  Squirrel(float sX,float sY){
-    this.squX=sX;
-    this.squY=sY;
-  }
-  
-  void move(int x){
+    float squX;
+    float squY;
+    Squirrel(float sX,float sY){
+      this.squX=sX;
+      this.squY=sY;
+    }
+    
+    void move(int x){
+      pushMatrix();
+      translate(0,0);
+          squX+=x;
+      if(squX>1170){
+        squX=1170;
+       
+      }
+      else if (squX<915){
+        squX=915;
+      }
+      popMatrix();
+    }
+    
+    void display(){
     pushMatrix();
     translate(0,0);
-        squX+=x;
-    if(squX>1170){
-      squX=1170;
-     
-    }
-    else if (squX<915){
-      squX=915;
-    }
+      noStroke();
+    
+    fill(#795A41);
+    ellipse(squX+25,squY-10,40,25);
+    ellipse(squX+15,squY+10,30,50);
+    
+    fill(#896649);
+    ellipse(squX,squY, 50,80);
+    circle(squX,squY-45,45);
+    ellipse(squX+12,squY-40, 10,80);
+    ellipse(squX-12,squY-40, 10,80);
+    
+    fill(#64472F);
+    circle(squX-10,squY+35,20);
+    circle(squX+10,squY+35,20);
+    
+    ellipse(squX+15,squY-10,10,20);
+    ellipse(squX-15,squY-10,10,20);
+    fill(0);
+    
+    circle(squX+10,squY-45,4);
+    circle(squX-10,squY-45,4);
+    
+    stroke(0);
+    line(squX+5,squY-47,squX+15, squY-50);
+    line(squX-5,squY-47,squX-15, squY-50);
     popMatrix();
   }
-  
-  void display(){
-pushMatrix();
-translate(0,0);
-    noStroke();
-  
-  fill(#795A41);
-  ellipse(squX+25,squY-10,40,25);
-  ellipse(squX+15,squY+10,30,50);
-  
-  fill(#896649);
-  ellipse(squX,squY, 50,80);
-  circle(squX,squY-45,45);
-  ellipse(squX+12,squY-40, 10,80);
-  ellipse(squX-12,squY-40, 10,80);
-  
-  fill(#64472F);
-  circle(squX-10,squY+35,20);
-  circle(squX+10,squY+35,20);
-  
-  ellipse(squX+15,squY-10,10,20);
-  ellipse(squX-15,squY-10,10,20);
-  fill(0);
-  
-  circle(squX+10,squY-45,4);
-  circle(squX-10,squY-45,4);
-  
-  stroke(0);
-  line(squX+5,squY-47,squX+15, squY-50);
-  line(squX-5,squY-47,squX-15, squY-50);
-  
-  stroke(0);
-    fill(#82BF00);
-    ellipse(squX, squY-10, 40, 15);
-
-    fill(#716E6E);
-    rect(squX, squY+15, 30, 50);
-
-    rect(squX-10, squY+15, 5, 40);
-    rect(squX, squY+15, 5, 40);
-    rect(squX+10, squY+15, 5, 40);
-
-    rect(squX, squY-20, 40, 10);
-    rect(squX, squY-25, 10, 5);
-  
-  
-  popMatrix();
-}
-  
-}
-
+    
+  }
 
   class Pool {
+    // state explanation: scale 0-5. 0 = clean, 5 = poluted
     int state;
   
     Pool () {
     }
-    // state explanation: scale 0-5. 0 = clean, 5 = poluted
+  
     void display(int istate) {
+  
+      // The white stroke of the pool
       strokeWeight(20);
       stroke(#FFFFFF);
       line(195, 390, 805, 390);
@@ -154,6 +127,7 @@ translate(0,0);
       line(85, 710, 195, 390);
       strokeWeight(1);
   
+      // The blue tiles
       fill(#05C5F2);
       beginShape();
       vertex(200, 400);
@@ -162,6 +136,7 @@ translate(0,0);
       vertex(100, 700);
       vertex(200, 400);
       endShape();
+      // The surface under the water
       fill(#EAEAEA);
       beginShape();
       vertex(200, 430);
@@ -170,6 +145,8 @@ translate(0,0);
       vertex(110, 700);
       vertex(200, 430);
       endShape();
+  
+      // For loops to create the tile pattern in the swimming pool
       for (int i=0; i<31; i++) {
         line(200+20*i, 400, 200+20*i, 550);
         line(150+23.3*i, 700, 200+20*i, 550);
@@ -185,19 +162,21 @@ translate(0,0);
         line(850+10*i, 550+30*i, 850+10*i, 700);
       }
   
+      // Part of the staircase that is beneath water level.
       strokeWeight(5);
-  
       stroke(#A8B2B4);
       line(142, 645, 142, 690);
       line(125, 710, 142, 660);
       line(125, 730, 142, 680);
       line(125, 685, 125, 700);
-  
       line(125, 690, 142, 640);
   
+      // Lowe stroke of the swimming pool again to hide the staircase.
       strokeWeight(20);
       stroke(#FFFFFF);
       line(915, 710, 85, 710);
+  
+      // If statement that makes sure the color level of the water changes according to the number of thrashbacks thrown in.
       state = istate;
       if (state == 0) {
         fill(#54F1F5, 50);
@@ -210,6 +189,8 @@ translate(0,0);
       } else {
         fill(#8B6A0D, 99);
       }
+  
+      // The water
       noStroke();
       beginShape();
       vertex(200, 430);
@@ -218,6 +199,8 @@ translate(0,0);
       vertex(110, 700);
       vertex(200, 430);
       endShape();
+  
+      // Displays the part of the staircase above water level.
       stroke(0);
       noFill();
       strokeWeight(5);
@@ -226,5 +209,44 @@ translate(0,0);
       line(125, 675, 125, 680);
       line(142, 625, 142, 635);
       line(125, 670, 142, 620);
+    }
+  }
+
+  class Chair {
+    Chair() {
+    }
+  
+    void display() {
+  
+      // legs of the chair
+      stroke(#90760C);
+      fill(#90760C);
+      strokeWeight(8);
+      line(300, 350, 300, 250);
+      line(380, 350, 380, 250);
+      line(310, 330, 310, 230);
+      line(370, 330, 370, 230);
+  
+      // seating
+      beginShape();
+      vertex(310, 230);
+      vertex(370, 230);
+      vertex(380, 250);
+      vertex(300, 250);
+      vertex(310, 230);
+      endShape();
+  
+      // backrest
+      rect(340, 190, 60, 50);
+  
+      // floating live saving rubber band.
+      strokeWeight(15);
+      noFill();
+      stroke(#FFFFFF);
+      arc(300, 300, 50, 50, 0, HALF_PI);
+      arc(300, 300, 50, 50, PI, PI+HALF_PI);
+      stroke(#FF0000);
+      arc(300, 300, 50, 50, HALF_PI, PI);
+      arc(300, 300, 50, 50, PI+HALF_PI, TWO_PI);
     }
   }

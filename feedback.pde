@@ -6,34 +6,35 @@ class Feedback {
     Feedback() {}
 
     void showHappy() {
+        strokeWeight(1);
         calcDuration();
         pushMatrix();
         translate(smileyPosX, smileyPosY);
-        img = loadImage("happyface.jpg");
+        PImage img = loadImage("happyface.jpg");
         image(img, 0, 0);
     }
 
     void showAngry() {
+        strokeWeight(1);
         calcDuration();
         pushMatrix();
         translate(smileyPosX, smileyPosY);
-        img = loadImage("angryFace.png");
+        PImage img = loadImage("angryFace.png");
         image(img, 0, 0);
     }
 
     void calcDuration() {
-        float currentFrame;
-        float duration = 60*2; // how long do we want to show the happyface
-        currentFrame = framecount();
-        endFrame = currentFrame + duration;
+        float duration = 60*5; // how long do we want to show the happyface
+        endFrame = frameCount + duration;
     }
 
-    void display() {
+    void display(boolean state) {
         for(int i = 0; i > endFrame; i++) {
-            //some kind of if 
-            showHappy();
-            // else 
-            showAngry();
+            if (state)
+                showHappy();
+            else {
+                showAngry();
+            }
         }
     }
 }

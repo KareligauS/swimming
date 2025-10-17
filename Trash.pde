@@ -22,6 +22,7 @@ class Trash {
     public Trash(){}
 
     void display(float trashX, float trashY) {
+        strokeWeight(1);
       stroke(0);
       fill(#82BF00);
       ellipse(trashX, trashY-25, 40, 15);

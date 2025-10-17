@@ -3,7 +3,9 @@ GameSystem system = new GameSystem();
 
 int station = 0;
 Squirrel squ1 = new Squirrel(950, 230);
+Feedback feed = new Feedback();
 Pool pool = new Pool();
+Chair chair = new Chair();
 
 Tree[] trees = new Tree[4];
 

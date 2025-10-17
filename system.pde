@@ -34,7 +34,7 @@ public enum GameStage{
 class GameplayManager{
     ActorManager actorMan;
     TrashAnimationManager trashManager;
-    GameStage stage;
+    GameStage stage = GameStage.NONE;
     int failCount = 0;
     int successCount = 0;
 
@@ -66,6 +66,8 @@ class GameplayManager{
         if (frameCount % settings.spawnCountFrame == 0){
             spawn(settings);
         }
+
+        ChangeStageIfConditions();
     }
 
     public void ChangeStageIfConditions(){

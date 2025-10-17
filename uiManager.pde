@@ -31,7 +31,7 @@ class UIManager {
     void finalMsg() {
         String msg = "You don't want animals to pollute your home. Don't pollute theirs!";
         fill(200);
-        text(msg, width/2, 700);
+        text(msg, 0, 700);
     }
 
 //output text for win or loose
@@ -39,10 +39,10 @@ class UIManager {
         finalMsg();
         if(isWin) { //input win condition
             String win = "Congratulations You've won!";
-            text(win,width/2,680);
+            text(win,0,680);
         } else { //input loose condition
             String loose = "Huh, seems like You've lost...";
-            text(loose,width/2,680);
+            text(loose,0,680);
         }
     }
 }
