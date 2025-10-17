@@ -1,4 +1,3 @@
-/*
 //place holder setup
 
 setup() {
@@ -54,6 +53,8 @@ class uiManager {
         // Check if the point (mouseX, mouseY) is in the circle and the mouse is pressed
         if (IsPointInCircle(trashbag, mouseX, mouseY)) { 
             points++;
+            circle trashbag = null;
+            mouseHasBeenPressed false;
         }
     }
  //update gamestate
