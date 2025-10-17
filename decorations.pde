@@ -47,6 +47,22 @@ class Tree {
       rect(x-280, y-305, 30, 35);
       fill(#B45747);
       rect(x-250, y-250, 35, 50);
+
+      //Trash
+      stroke(0);
+      fill(#82BF00);
+      ellipse(trashX, trashY-25, 40, 15);
+  
+      fill(#716E6E);
+      rect(trashX, trashY, 30, 50);
+  
+      rect(trashX-10, trashY, 5, 40);
+      rect(trashX, trashY, 5, 40);
+      rect(trashX+10, trashY, 5, 40);
+  
+      rect(trashX, trashY-35, 40, 10);
+      rect(trashX, trashY-40, 10, 5);
+
     }
   }
 
