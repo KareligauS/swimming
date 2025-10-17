@@ -21,6 +21,8 @@ class Circle {
 
 class uiManager {
     int points;
+    boolean mouseHasBeenPressed;
+
 
     //constructor
     uiManager() {
