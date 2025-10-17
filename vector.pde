@@ -113,6 +113,18 @@ class Circle {
     circle(position.x, position.y, extent);
     noStroke();
   }
+
+  boolean IsPointInCircle(Vector2 point) {
+    // Calculate the squared distance between the point and the circle's center
+    Vector2 distanceOffset = transform.GetGlobalPosition().Substitute(point);
+    
+    float distanceScalar = sqrt(distanceOffset.x * distanceOffset.x + distanceOffset.y * distanceOffset.y); 
+    
+    println(distanceScalar);
+    println(extent);
+    // Check for collision: distance <= radius
+    return distanceScalar <= extent;
+}
 }
 
 class Vector2 {
