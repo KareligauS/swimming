@@ -57,9 +57,9 @@ class TrashAnimationManager{
         trashBags.remove(trash);
     }
 
-    public void update(){
+    public void update(Settings settings){
         for (TrashBag trash : trashBags){
-            trash.update();
+            trash.update(settings);
         }
     }
 }

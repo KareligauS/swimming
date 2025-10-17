@@ -14,19 +14,11 @@ class GraphicsManager{
     public void displayStatic(){
         trees[station].display();
         squ1.display();
-        pool.display(0);
+        pool.display(1); // DO NOT FORGET TO ADD THE COUTNER
     }
 
-    public void add_all(ArrayList<IDisplayable> _elements){
+    public void connect(ArrayList<IDisplayable> _elements){
         elements = _elements;
-    }
-
-    public void add(IDisplayable element){
-        elements.add(element);
-    }
-
-    public void remove(IDisplayable element){
-        elements.remove(element);
     }
 }
 

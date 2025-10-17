@@ -1,20 +1,24 @@
 class GameSystem{
     GameplayManager gameplay;
+    UIManager ui;
     GraphicsManager graphics = new GraphicsManager();
     ActorManager actorMan = new ActorManager();
     InteractionManager interaction;
 
     public GameSystem(){
-        gameplay = new GameplayManager(actorMan);
+        gameplay = new GameplayManager(actorMan, settings);
+        ui = new UIManager(gameplay);
         interaction = new InteractionManager(gameplay);
-        graphics.add_all(actorMan.displays);
-
-        actorMan.createTrash(new Vector2(50, 50));
+        graphics.connect(actorMan.displays);        
     }
 
     public void display(){
         graphics.displayAll();
-        gameplay.update();
+        ui.display();
+    }
+
+    public void update(Settings settings){
+        gameplay.update(settings);
     }
 
     public void onClick(int x, int y){
@@ -27,11 +31,10 @@ class GameplayManager{
     TrashAnimationManager trashManager;
     int failCount = 0;
     int successCount = 0;
-    float spawnY = 20;
-    float crossLineY = 500;
 
-    public GameplayManager(ActorManager _actorMan){
+    public GameplayManager(ActorManager _actorMan, Settings _settings){
         actorMan = _actorMan;
+        settings = _settings;
         trashManager = new TrashAnimationManager(actorMan.trashBags);
     }
 
@@ -50,16 +53,24 @@ class GameplayManager{
         }
     }
 
-    public void update(){
-        trashManager.update();
-        processTrashBags();
+    public void update(Settings settings){
+        trashManager.update(settings);
+        processTrashBags(settings);
+
+        if (frameCount % settings.spawnCountFrame == 0){
+            spawn();
+        }
     }
 
-    public void processTrashBags(){
+    public void spawn(){
+        actorMan.createTrash(new Vector2(50, 50));
+    }
+
+    public void processTrashBags(Settings settings){
         ArrayList<TrashBag> toRemove = new ArrayList<TrashBag>();
 
         for (TrashBag el : trashManager.trashBags){
-            if (el.transform.GetGlobalPosition().y > crossLineY){
+            if (el.transform.GetGlobalPosition().y > settings.crossLineY){
                 toRemove.add(el);
                 failCount++;
             }

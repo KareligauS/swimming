@@ -1,7 +1,6 @@
-color backgroundColor = #9DE8F0;
-Vector2 canvasSize = new Vector2(1280, 720);
+Settings settings = new Settings();
 GameSystem system = new GameSystem();
-float globalGravity = 1;
+
 int station = 0;
 Squirrel squ1 = new Squirrel(950, 230);
 Pool pool = new Pool();
@@ -9,7 +8,7 @@ Pool pool = new Pool();
 Tree[] trees = new Tree[4];
 
 void settings(){
-    size((int)canvasSize.x, (int)canvasSize.y);
+    size((int)settings.canvasSize.x, (int)settings.canvasSize.y);
 }
 
 void setup() {
@@ -23,7 +22,8 @@ void setup() {
 }
   
 void draw() {
-    background(backgroundColor);
+    background(settings.backgroundColor);
+    system.update(settings);
     system.display();
 }
 
