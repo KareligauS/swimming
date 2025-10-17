@@ -47,8 +47,8 @@ abstract class TrashActor extends Actor{
 
     abstract void display();
 
-    public void update(){
-        _state.HandleUpdate();
+    public void update(Settings settings){
+        _state.HandleUpdate(settings);
     }
 
     public void SetState(TrashActorStateType stateType){
@@ -75,7 +75,7 @@ abstract class TrashActorState{
         _instance = instance;
     }
 
-    abstract void HandleUpdate();
+    abstract void HandleUpdate(Settings settings);
     abstract void HandleStateChanged();
 }
 
@@ -88,7 +88,7 @@ public class TrashStaticState extends TrashActorState{
         //NotImplemented
     }
 
-    void HandleUpdate(){
+    void HandleUpdate(Settings settings){
         //Nothing
     }
 }
@@ -102,8 +102,8 @@ public class TrashFallState extends TrashActorState{
         //NotImplemented
     }
 
-    void HandleUpdate(){
-        _instance.AddOffset(new Vector2(0, globalGravity));
+    void HandleUpdate(Settings settings){
+        _instance.AddOffset(new Vector2(0, settings.globalGravity));
     }
 }
 
@@ -116,7 +116,7 @@ public class TrashThrowState extends TrashActorState{
         //NotImplemented
     }
 
-    void HandleUpdate(){
+    void HandleUpdate(Settings settings){
         //Nothing
     }
 }
