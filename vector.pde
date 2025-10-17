@@ -200,6 +200,7 @@ class Vector2 {
   }
 }
 
+/* Example
 class Eye {
   Transform transform = new Transform();
   private Circle _eye;
@@ -230,3 +231,8 @@ class Eye {
     _pupil.display();
   }
 }
+*/
+
+
+trasnform(x,y)
+circle(x*.2)
