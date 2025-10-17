@@ -15,6 +15,6 @@ void draw() {
 
 //if mouse is pressed add points
 mousePressed() { 
-    uiManager.counter();
+    uiManager.counter(mouseX, mouseY);
     uiManager.mouseHasBeenPressed = true;
 }
