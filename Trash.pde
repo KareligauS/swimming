@@ -8,7 +8,7 @@ class TrashBag extends TrashActor {
 
     public TrashBag(Vector2 initialPos){
         transform.SetPosition(initialPos);
-        hitbox = new Circle(#333333, 30, initialPos);
+        hitbox = new Circle(#333333, 50, initialPos);
         hitbox.transform.SetParent(transform);
     }
 

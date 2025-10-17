@@ -1,7 +1,12 @@
 import java.util.ArrayList;
 
 class GraphicsManager{
+    GameplayManager gameplay;
     ArrayList<IDisplayable> elements = new ArrayList<IDisplayable>();
+
+    GraphicsManager(GameplayManager _gameplay){
+        gameplay = _gameplay;
+    }
 
     public void displayAll(){
         displayStatic();
@@ -14,7 +19,7 @@ class GraphicsManager{
     public void displayStatic(){
         trees[station].display();
         squ1.display();
-        pool.display(1); // DO NOT FORGET TO ADD THE COUTNER
+        pool.display(gameplay.failCount); 
     }
 
     public void connect(ArrayList<IDisplayable> _elements){

@@ -8,24 +8,39 @@ class UIManager {
 
     //update display
     void display() {
+        displaySuccessPoints();
+        displayStageMsg();
+    }
+
+    void displaySuccessPoints(){
         String pointsMsg = "Current Points: " + gameplay.successCount;
-        fill(200); 
+        fill(0); 
+        textSize(32);
         text(pointsMsg, 40, 40);
     }
 
+    void displayStageMsg(){
+        if (gameplay.stage == GameStage.LOSS){
+            winOrLoose(false);
+        }
+        else if (gameplay.stage == GameStage.WIN){
+            winOrLoose(true);
+        }
+    }
+        
     void finalMsg() {
         String msg = "You don't want animals to pollute your home. Don't pollute theirs!";
         fill(200);
         text(msg, width/2, 700);
-        winOrLoose();
     }
 
 //output text for win or loose
-    void winOrLoose() {
-        if() { //input win condition
+    void winOrLoose(boolean isWin) {
+        finalMsg();
+        if(isWin) { //input win condition
             String win = "Congratulations You've won!";
             text(win,width/2,680);
-        } else if () { //input loose condition
+        } else { //input loose condition
             String loose = "Huh, seems like You've lost...";
             text(loose,width/2,680);
         }

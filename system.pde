@@ -1,13 +1,14 @@
 class GameSystem{
     GameplayManager gameplay;
     UIManager ui;
-    GraphicsManager graphics = new GraphicsManager();
+    GraphicsManager graphics;
     ActorManager actorMan = new ActorManager();
     InteractionManager interaction;
 
     public GameSystem(){
         gameplay = new GameplayManager(actorMan, settings);
         ui = new UIManager(gameplay);
+        graphics = new GraphicsManager(gameplay);
         interaction = new InteractionManager(gameplay);
         graphics.connect(actorMan.displays);        
     }
@@ -26,9 +27,14 @@ class GameSystem{
     }
 }
 
+public enum GameStage{
+    WIN, LOSS, NONE
+}
+
 class GameplayManager{
     ActorManager actorMan;
     TrashAnimationManager trashManager;
+    GameStage stage;
     int failCount = 0;
     int successCount = 0;
 
@@ -58,12 +64,27 @@ class GameplayManager{
         processTrashBags(settings);
 
         if (frameCount % settings.spawnCountFrame == 0){
-            spawn();
+            spawn(settings);
         }
     }
 
-    public void spawn(){
-        actorMan.createTrash(new Vector2(50, 50));
+    public void ChangeStageIfConditions(){
+        if (stage != GameStage.NONE) return;
+
+        if (failCount >= 5){
+            stage = GameStage.LOSS;
+        }
+        else if (successCount >= 20) {
+            stage = GameStage.WIN;
+        }
+    }
+
+    public void spawn(Settings settings){
+        actorMan.createTrash(getRandomPosition(settings.poolLeftBorderX, settings.poolRightBorderX, settings.spawnY));
+    }
+
+    public Vector2 getRandomPosition(float minX, float maxX, float y){
+        return new Vector2(random(minX, maxX), y);
     }
 
     public void processTrashBags(Settings settings){
