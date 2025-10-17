@@ -33,6 +33,7 @@ class uiManager {
      */
     boolean IsPointInCircle(Circle circle, float px, float py) {
         // Calculate the squared distance between the point and the circle's center
+        mouseVector = new Vector 
         float dx = px - circle.x;
         float dy = py - circle.y;
         
@@ -64,12 +65,16 @@ class uiManager {
         String pointsMsg = "Current Points: " + points;
         fill(200); 
         text(pointsMsg, 40, 40);
+        finalMsg();
     }
 
 void finalMsg() {
+    If () {
+
     String msg = "You don't want animals to pollute your home. Don't pollute theirs!";
     fill(200);
     text(msg, width/2, 700);
+    }
 }
 
 }
